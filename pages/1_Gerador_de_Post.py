@@ -1,10 +1,12 @@
+import os
+from datetime import datetime
 import streamlit as st
 from PIL import Image, ImageOps
 from utils.generator import gerar_post
 
+# Configuração da página
 st.set_page_config(page_title="Gerar Post | ArquiBlog")
 st.title("🛠️ Gerador de Post para Blog de Arquitetura")
-
 st.markdown("Preencha as informações abaixo para gerar um post contínuo, pronto para o blog.")
 
 # Upload da imagem
@@ -24,16 +26,27 @@ if st.button("🚀 Gerar post"):
         st.warning("Preencha pelo menos uma das frases para contextualizar o projeto.")
     else:
         with st.spinner("Gerando texto com inteligência artificial..."):
-            # Nome seguro para a imagem
-            imagem_nome = getattr(uploaded_file, "name", "imagem_sem_nome.jpg")
+
+            # Criação da pasta temporária se não existir
+            upload_dir = "uploads"
+            os.makedirs(upload_dir, exist_ok=True)
+
+            # Geração de nome único para o arquivo
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            ext = os.path.splitext(uploaded_file.name)[1].lower()
+            imagem_temp_path = os.path.join(upload_dir, f"projeto_{timestamp}{ext}")
+
+            # Salvando a imagem temporariamente
+            with open(imagem_temp_path, "wb") as f:
+                f.write(uploaded_file.read())
 
             # Geração do post
-            texto_gerado = gerar_post([frase1, frase2, frase3], imagem_nome)
+            texto_gerado = gerar_post([frase1, frase2, frase3], imagem_temp_path)
 
+            # Exibição
             st.success("✅ Post gerado com sucesso!")
 
-            # Redimensiona a imagem com proporção para exibição clara
-            imagem = Image.open(uploaded_file)
+            imagem = Image.open(imagem_temp_path)
             imagem_redimensionada = ImageOps.contain(imagem, (700, 1000))
 
             st.markdown("### 📸 Imagem do Projeto:")
