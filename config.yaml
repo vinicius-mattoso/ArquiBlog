@@ -1,0 +1,98 @@
+app:
+  product_name: ArquiBlog Studio
+  office_name: Vini Arquitetura
+  language: pt-BR
+  default_channel: blog
+brand:
+  tagline: Narrativas elegantes para estudios de arquitetura
+  voice_style: sofisticada, acolhedora e inspiradora
+  persona: redator especialista em arquitetura de interiores
+  objective: criar conteudos envolventes que transformem projetos em narrativas desejaveis
+models:
+  text_generation: gpt-3.5-turbo-instruct
+  image_analysis: gpt-4-turbo
+  text_temperature: 0.7
+  vision_temperature: 0.2
+  vision_max_tokens: 500
+channels:
+  blog:
+    label: Blog
+    description: Texto mais profundo, autoral e sensorial para o site do escritorio.
+    output_label: Post de blog
+    style_guidelines:
+    - Conecte o projeto ao estilo de vida dos moradores.
+    - Misture linguagem emocional, tecnica e sensorial.
+    - Use vocabulario acessivel, elegante e natural.
+    - Nao insira intertitulos.
+    - Nao mencione o nome do arquivo da imagem.
+    content_structure:
+    - Um titulo criativo no topo, sem rotular como titulo.
+    - Abertura emocional com contexto e sensacoes.
+    - Desenvolvimento com descricao tecnica de materiais, texturas, layout e solucoes.
+    - Encerramento reflexivo com convite suave para interacao.
+    - Hashtags relevantes ao final, separadas por espaco.
+    output:
+      min_words: 850
+      max_words: 1000
+      hashtags_hint: '#arquitetura #interiores #design'
+      cta_style: Convite sutil para continuar explorando o escritorio.
+      emoji_policy: Use emojis com muita moderacao, apenas se realmente agregarem.
+  instagram:
+    label: Instagram
+    description: Legenda mais curta, envolvente e pensada para performance em redes
+      sociais.
+    output_label: Legenda de Instagram
+    style_guidelines:
+    - Abra com um gancho elegante e facil de escanear.
+    - Valorize atmosfera, materiais e estilo de vida.
+    - Use quebras de linha estrategicas.
+    - Use emojis de forma pontual e refinada.
+    - Finalize com CTA leve e hashtags relevantes.
+    content_structure:
+    - Abertura curta e marcante.
+    - Corpo principal com descricao do projeto.
+    - Fechamento com CTA para comentar, salvar ou compartilhar.
+    - Hashtags ao final.
+    output:
+      min_words: 90
+      max_words: 180
+      hashtags_hint: '#arquitetura #design #interiores #decor'
+      cta_style: Convite suave para comentar, salvar ou compartilhar.
+      emoji_policy: Use poucos emojis, com elegancia.
+  linkedin:
+    label: LinkedIn
+    description: Texto mais estrategico, profissional e orientado a autoridade de
+      marca.
+    output_label: Post de LinkedIn
+    style_guidelines:
+    - Use um tom consultivo, profissional e claro.
+    - Mostre racional de projeto, decisao e impacto para o cliente.
+    - Equilibre visao estetica com criterio tecnico.
+    - Evite excesso de emojis.
+    - Finalize com provocacao ou pergunta profissional.
+    content_structure:
+    - Abertura com insight sobre o desafio ou oportunidade do projeto.
+    - Desenvolvimento com solucoes adotadas e seus efeitos.
+    - Fechamento com aprendizados, posicionamento ou pergunta.
+    - Hashtags discretas ao final.
+    output:
+      min_words: 180
+      max_words: 320
+      hashtags_hint: '#arquitetura #designestrategico #interiores'
+      cta_style: Estimule reflexao profissional ou conversa com potenciais clientes.
+      emoji_policy: Evite emojis ou use no maximo um.
+prompts:
+  writing:
+    global_style_guidelines:
+    - Escreva em portugues do Brasil.
+    - Mantenha fluidez e coesao do inicio ao fim.
+    - Preserve o posicionamento premium do escritorio.
+    - Nunca mencione o nome da ferramenta ou plataforma usada para gerar o texto.
+    - Nunca use o nome da ferramenta em hashtags.
+    - Se houver mencao de marca, use apenas o nome do escritorio informado.
+  image_analysis:
+    system_prompt: Voce e um arquiteto especialista em design de interiores. Analise
+      a imagem e descreva com detalhes tecnicos e sensoriais o estilo, os materiais
+      e a funcao do ambiente.
+    user_prompt: Descreva o ambiente como se fosse publicar no Instagram de um escritorio
+      de arquitetura sofisticado.

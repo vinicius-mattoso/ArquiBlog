@@ -93,5 +93,74 @@
         "descricao_imagem": "🌟 Explorando a elegância do minimalismo! 🌟 Hoje, trazemos para vocês um cantinho que é a verdadeira definição de \"menos é mais\". Este quarto multifuncional não só serve como um santuário de descanso, mas também como um espaço produtivo de trabalho.\n\n✨ A paleta de cores suaves, dominada por tons de bege e branco, cria uma atmosfera calmante, ideal para relaxar após um longo dia. A iluminação indireta embutida atrás do painel da cama e acima da área de trabalho oferece um brilho suave que aquece o ambiente sem ser invasivo.\n\n🌱 A presença de elementos naturais, como as plantas suspensas, adiciona um toque de frescor e vida, promovendo bem-estar e conexão com a natureza.\n\n🖥️ O espaço de trabalho é compacto, porém extremamente funcional, com uma mesa que se integra perfeitamente ao ambiente, acompanhada de uma cadeira confortável e elegante. A disposição permite fácil acesso ao notebook, enquanto a proximidade com a cama facilita a transição entre trabalho e descanso.\n\n🛏️ A cama, com seu design curvo e acolhedor, está repleta de almofadas que não só aumentam o conforto mas também adicionam uma camada de textura e cor com tons suaves e terrosos.\n\n🌟 Cada detalhe deste quarto foi pensado para maximizar o espaço sem sacrificar o estilo e o conforto. É um exemplo perfeito de como espaços pequenos podem ser transformados em áreas de grande valor estético e funcional.\n\n#ArquiteturaDeInteriores #DesignMinimalista #EspaçoMultifuncional #ConfortoEestilo #HomeOfficeDesign #DecoraçãoDeInteriores #InspiraçãoDeDesign #EstiloDeVidaModerno",
         "arquivo_txt": "posts\\post_2025-04-18_17-49-51.txt",
         "modelo_usado": "gpt-4-turbo"
+    },
+    {
+        "data_hora": "02/04/2026 18:14:51",
+        "frases": [
+            "Sala comercial",
+            "Cores descretas",
+            "Sutiliza e elegancia"
+        ],
+        "imagem": "uploads\\projeto_20260402_181439.png",
+        "descricao_imagem": "Descricao automatica indisponivel.",
+        "arquivo_txt": "posts\\post_2026-04-02_18-14-51.txt",
+        "modelo_texto": "gpt-3.5-turbo-instruct",
+        "modelo_imagem": "gpt-4-turbo"
+    },
+    {
+        "data_hora": "02/04/2026 18:30:38",
+        "canal": "instagram",
+        "frases": [
+            "Clean",
+            "Moderno",
+            "Iluminação"
+        ],
+        "imagem": "uploads\\projeto_IMG_4838_417daf79.jpg",
+        "descricao_imagem": "Descricao automatica indisponivel.",
+        "arquivo_txt": "posts\\post_2026-04-02_18-30-38.txt",
+        "modelo_texto": "gpt-3.5-turbo-instruct",
+        "modelo_imagem": "gpt-4-turbo"
+    },
+    {
+        "data_hora": "02/04/2026 18:38:39",
+        "canal": "instagram",
+        "frases": [
+            "Clean",
+            "Integração sala varanda",
+            "Madeira clara"
+        ],
+        "imagem": "uploads\\projeto_IMG_4772-Editar_5608d76c.jpg",
+        "descricao_imagem": "Descricao automatica indisponivel.",
+        "arquivo_txt": "posts\\post_2026-04-02_18-38-39.txt",
+        "modelo_texto": "gpt-3.5-turbo-instruct",
+        "modelo_imagem": "gpt-4-turbo"
+    },
+    {
+        "data_hora": "02/04/2026 18:40:54",
+        "canal": "instagram",
+        "frases": [
+            "Clean",
+            "Integração sala varanda",
+            "Madeira clara"
+        ],
+        "imagem": "uploads\\projeto_IMG_4772-Editar_e6a50406.jpg",
+        "descricao_imagem": "Descricao automatica indisponivel.",
+        "arquivo_txt": "posts\\post_2026-04-02_18-40-54.txt",
+        "modelo_texto": "gpt-3.5-turbo-instruct",
+        "modelo_imagem": "gpt-4-turbo"
+    },
+    {
+        "data_hora": "02/04/2026 18:48:11",
+        "canal": "blog",
+        "frases": [
+            "Clean",
+            "Moderno",
+            "Madeira clara"
+        ],
+        "imagem": "uploads\\projeto_IMG_4838_7dff0c8c.jpg",
+        "descricao_imagem": "Descricao automatica indisponivel.",
+        "arquivo_txt": "posts\\post_2026-04-02_18-48-11.txt",
+        "modelo_texto": "gpt-3.5-turbo-instruct",
+        "modelo_imagem": "gpt-4-turbo"
     }
 ]
