@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ product_name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar-card">
+      <div class="brand-block">
+        <p class="eyebrow">Arquitetura + IA</p>
+        <h1 id="product-name">{{ brand_settings.product_name }}</h1>
+        <p class="sidebar-copy" id="brand-tagline">{{ brand_settings.tagline }}</p>
+      </div>
+      <div class="sidebar-panel">
+        <span class="panel-label">Escritório</span>
+        <strong id="office-name">{{ brand_settings.office_name }}</strong>
+      </div>
+      <div class="sidebar-panel">
+        <span class="panel-label">Tom de voz</span>
+        <p id="voice-style">{{ brand_settings.voice_style }}</p>
+      </div>
+      <div class="sidebar-panel">
+        <span class="panel-label">Persona</span>
+        <p id="persona">{{ brand_settings.persona }}</p>
+      </div>
+      <div class="sidebar-note">
+        A interface foi redesenhada para operar como uma mesa editorial digital do escritório.
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <section class="hero-card">
+        <div>
+          <p class="eyebrow">Studio</p>
+          <h2>Conteúdo premium para Blog, Instagram e LinkedIn.</h2>
+          <p class="hero-copy">
+            Gere textos com direção editorial consistente, imagem analisada por IA e uma experiência visual pronta para uso interno.
+          </p>
+        </div>
+      </section>
+
+      <section class="tabs-bar">
+        <button class="tab-button is-active" type="button" data-tab-target="tab-generate">Geração</button>
+        <button class="tab-button" type="button" data-tab-target="tab-settings">Ajustes</button>
+      </section>
+
+      <section id="tab-generate" class="tab-panel is-active">
+        <section class="content-grid">
+          <section class="card card-large">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Geração</p>
+                <h3>Novo conteúdo</h3>
+              </div>
+              <span class="section-kicker">Operação assistida por IA</span>
+            </div>
+
+            <form id="generation-form" class="generation-form">
+              <div class="channel-grid">
+                {% for key, channel in channels.items() %}
+                <label class="channel-option">
+                  <input type="radio" name="channel" value="{{ key }}" {% if key == brand_settings.default_channel %}checked{% endif %}>
+                  <span class="channel-card">
+                    <strong>{{ channel.label }}</strong>
+                    <small>{{ channel.description }}</small>
+                  </span>
+                </label>
+                {% endfor %}
+              </div>
+
+              <div class="upload-shell">
+                <label for="image-input" class="upload-box">
+                  <span class="upload-badge">Selecionar imagem</span>
+                  <strong>Imagem do projeto</strong>
+                  <small>PNG, JPG ou JPEG</small>
+                  <em>Clique para escolher o arquivo</em>
+                </label>
+                <input id="image-input" name="image" type="file" accept=".png,.jpg,.jpeg" required>
+                <div id="image-preview" class="image-preview is-empty">
+                  <span>Preview da imagem</span>
+                </div>
+              </div>
+
+              <div class="stacked-inputs">
+                <label>
+                  <span>Frase 1</span>
+                  <input name="phrase1" type="text" placeholder="Conceito principal do projeto">
+                </label>
+                <label>
+                  <span>Frase 2</span>
+                  <input name="phrase2" type="text" placeholder="Materiais, atmosfera ou estilo">
+                </label>
+                <label>
+                  <span>Frase 3</span>
+                  <input name="phrase3" type="text" placeholder="Público, contexto ou desafio">
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button class="primary-button" type="submit">Gerar conteúdo</button>
+                <p id="form-status" class="status-text">Pronto para criar uma nova peça editorial.</p>
+              </div>
+            </form>
+          </section>
+
+          <section class="card">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Histórico</p>
+                <h3>Últimas gerações</h3>
+              </div>
+              <button id="refresh-history" class="ghost-button" type="button">Atualizar</button>
+            </div>
+            <div id="history-list" class="history-list">
+            </div>
+          </section>
+        </section>
+
+        <section class="content-grid result-grid">
+          <section class="card card-large result-card-full">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Resultado</p>
+                <h3>Texto gerado</h3>
+              </div>
+              <button id="copy-result" class="ghost-button" type="button">Copiar texto</button>
+            </div>
+            <div id="result-meta" class="result-meta">
+              Nenhum conteúdo gerado nesta sessão.
+            </div>
+            <div class="result-preview">
+              <div id="result-image" class="result-image empty-state">
+                A imagem enviada aparecerá aqui junto com o texto para avaliação completa.
+              </div>
+              <article id="result-content" class="result-content empty-state">
+                O texto final aparecerá aqui com o canal escolhido, pronto para revisar e publicar.
+              </article>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <section id="tab-settings" class="tab-panel">
+        <section class="content-grid settings-grid">
+          <section class="card card-large">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Ajustes</p>
+              <h3>Voz da marca</h3>
+            </div>
+          </div>
+
+          <form id="settings-form" class="settings-form">
+            <label>
+              <span>Nome do escritório</span>
+              <input name="office_name" type="text" value="{{ brand_settings.office_name }}">
+            </label>
+            <label>
+              <span>Tagline</span>
+              <input name="tagline" type="text" value="{{ brand_settings.tagline }}">
+            </label>
+            <label>
+              <span>Estilo de fala</span>
+              <textarea name="voice_style" rows="3">{{ brand_settings.voice_style }}</textarea>
+            </label>
+            <label>
+              <span>Persona</span>
+              <input name="persona" type="text" value="{{ brand_settings.persona }}">
+            </label>
+            <label>
+              <span>Objetivo editorial</span>
+              <textarea name="objective" rows="4">{{ brand_settings.objective }}</textarea>
+            </label>
+            <label>
+              <span>Canal padrão</span>
+              <select name="default_channel">
+                {% for key, channel in channels.items() %}
+                <option value="{{ key }}" {% if key == brand_settings.default_channel %}selected{% endif %}>{{ channel.label }}</option>
+                {% endfor %}
+              </select>
+            </label>
+            <button class="secondary-button" type="submit">Salvar ajustes</button>
+            <p id="settings-status" class="status-text">Edite apenas a camada superficial da configuração.</p>
+          </form>
+        </section>
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Visão geral</p>
+              <h3>Contexto atual</h3>
+            </div>
+          </div>
+          <div class="sidebar-panel">
+            <span class="panel-label">Produto</span>
+            <strong>{{ brand_settings.product_name }}</strong>
+          </div>
+          <div class="sidebar-panel">
+            <span class="panel-label">Escritório</span>
+            <strong id="settings-office-summary">{{ brand_settings.office_name }}</strong>
+          </div>
+          <div class="sidebar-panel">
+            <span class="panel-label">Canal padrão</span>
+            <strong id="settings-channel-summary">
+              {% for key, channel in channels.items() %}
+              {% if key == brand_settings.default_channel %}{{ channel.label }}{% endif %}
+              {% endfor %}
+            </strong>
+          </div>
+        </section>
+      </section>
+      </section>
+    </main>
+  </div>
+
+  <script id="bootstrap-data" type="application/json">{{ {"brand_settings": brand_settings, "channels": channels, "history": initial_history} | tojson }}</script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
