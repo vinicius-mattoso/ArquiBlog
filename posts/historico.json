@@ -162,5 +162,47 @@
         "arquivo_txt": "posts\\post_2026-04-02_18-48-11.txt",
         "modelo_texto": "gpt-3.5-turbo-instruct",
         "modelo_imagem": "gpt-4-turbo"
+    },
+    {
+        "data_hora": "03/04/2026 09:32:04",
+        "canal": "instagram",
+        "frases": [
+            "Clean com tons pasteis",
+            "Madeiras claras e cadeira com tom verde marcante",
+            "Decoração acolhedora"
+        ],
+        "imagem": "uploads\\projeto_projeto_20250418_172716_de24fa56.png",
+        "descricao_imagem": "Descricao automatica indisponivel.",
+        "arquivo_txt": "posts\\post_2026-04-03_09-32-04.txt",
+        "modelo_texto": "gpt-3.5-turbo-instruct",
+        "modelo_imagem": "gpt-4-turbo"
+    },
+    {
+        "data_hora": "03/04/2026 22:49:09",
+        "canal": "instagram",
+        "frases": [
+            "Sala conectada com cozinha",
+            "Conceito aberto",
+            "Cozinha Americana"
+        ],
+        "imagem": "uploads\\projeto_Teste_01_d79ddfe1.jpeg",
+        "descricao_imagem": "Descricao automatica indisponivel.",
+        "arquivo_txt": "posts\\post_2026-04-03_22-49-09.txt",
+        "modelo_texto": "gpt-3.5-turbo-instruct",
+        "modelo_imagem": "gpt-4-turbo"
+    },
+    {
+        "data_hora": "03/04/2026 22:53:33",
+        "canal": "instagram",
+        "frases": [
+            "Sala conectada com cozinha",
+            "Conceito aberto",
+            "Cozinha Americana Clean com pedra Branca"
+        ],
+        "imagem": "uploads\\projeto_Teste_01_0ed70e64.jpeg",
+        "descricao_imagem": "Descricao automatica indisponivel.",
+        "arquivo_txt": "posts\\post_2026-04-03_22-53-33.txt",
+        "modelo_texto": "gpt-3.5-turbo-instruct",
+        "modelo_imagem": "gpt-4-turbo"
     }
 ]

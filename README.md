@@ -1,4 +1,4 @@
-# ArquiBlog Studio
+# ArquiPost Studio
 
 Aplicação web em pt-BR para geração de conteúdo editorial de arquitetura com IA.  
 A solução foi desenhada para escritórios que precisam transformar imagens de projetos em textos prontos para `Blog`, `Instagram` e `LinkedIn`, com uma interface mais próxima de produto final e uma operação simples para usuários não técnicos.
@@ -46,6 +46,22 @@ Cada canal possui regras próprias de estrutura, tamanho e estilo, definidas em 
 - [`utils/generator.py`](./utils/generator.py): orquestração da geração
 - [`utils/image_description_gpt.py`](./utils/image_description_gpt.py): descrição da imagem com IA
 - [`config.yaml`](./config.yaml): branding, canais, prompts e modelos
+
+## Tech Stack
+
+- `Python 3`
+- `Flask`
+- `Jinja2`
+- `HTML5`
+- `CSS3`
+- `JavaScript`
+- `PyYAML`
+- `python-dotenv`
+- `LangChain`
+- `langchain-openai`
+- `OpenAI API`
+- `gpt-4-turbo` para interpretação da imagem
+- `gpt-3.5-turbo-instruct` para geração do texto da publicação
 
 ## Como Executar
 
@@ -100,12 +116,43 @@ As regras mais estruturais continuam centralizadas no YAML.
 9. O resultado é salvo em `posts/` e `posts/historico.json`.
 10. A interface exibe a imagem e o texto juntos para revisão.
 
+## Explicação da Sequência de Ações
+
+### Versão narrativa para usar no NotebookLM
+
+A solução começa quando o usuário acessa a interface web, escolhe o canal de saída e envia a imagem do projeto junto com até três frases de contexto. Essas frases funcionam como orientação editorial para explicar o conceito do ambiente, materiais, atmosfera, público-alvo ou qualquer outra intenção do escritório.
+
+Quando o envio é feito, o backend Flask recebe a requisição, salva a imagem localmente e consulta o arquivo `config.yaml`. Esse arquivo centraliza as configurações que entram no sistema, como nome do escritório, persona editorial, tom de voz, objetivo da marca, regras de cada canal, limites de palavras e prompts utilizados ao longo da geração.
+
+Depois disso, a solução faz o primeiro acesso a LLM. A imagem é enviada para um modelo multimodal, atualmente o `gpt-4-turbo`, responsável por interpretar visualmente o projeto. Esse modelo devolve uma descrição da imagem com foco em leitura arquitetônica, materiais, composição, atmosfera e função do ambiente.
+
+Na sequência, a aplicação monta um prompt final consolidado. Esse prompt une três grupos de informação: o contexto fornecido pelo usuário, a descrição visual produzida pela IA e as regras editoriais definidas no `config.yaml`.
+
+Com esse prompt pronto, acontece o segundo acesso a LLM. O modelo `gpt-3.5-turbo-instruct` recebe essas instruções e gera o texto final da publicação, adaptado ao canal selecionado, respeitando estilo, estrutura, tom e objetivo editorial.
+
+Depois da resposta do modelo textual, a aplicação ainda aplica regras finais de controle, como o limite máximo de palavras para Blog e LinkedIn, evitando saídas longas demais ou com aparência de corte amador. Por fim, o sistema salva o texto em arquivo `.txt`, atualiza o histórico local e devolve ao usuário uma prévia final com a imagem e o conteúdo juntos no mesmo bloco visual.
+
+### Entradas que alimentam o sistema
+
+- imagem do projeto;
+- até 3 frases de contexto;
+- canal escolhido pelo usuário;
+- configurações editoriais do `config.yaml`;
+- chave da OpenAI informada no ambiente.
+
+### Saídas produzidas pelo sistema
+
+- descrição visual da imagem;
+- texto final da publicação;
+- arquivo `.txt` salvo localmente;
+- registro estruturado no histórico com data, canal, modelos e imagem.
+
 ## Diagrama de Sequência: Visão Não Técnica
 
 ```mermaid
 sequenceDiagram
     actor Usuario as Cliente
-    participant Tela as Plataforma ArquiBlog Studio
+    participant Tela as Plataforma ArquiPost Studio
     participant IA as Inteligência Artificial
     participant Arquivos as Histórico da Solução
 
@@ -152,7 +199,7 @@ Esse diagrama é o mais indicado para documentação técnica, onboarding de des
 
 ## Regras Importantes da Solução
 
-- O nome da ferramenta `ArquiBlog Studio` não deve aparecer no texto gerado nem nas hashtags.
+- O nome da ferramenta `ArquiPost Studio` não deve aparecer no texto gerado nem nas hashtags.
 - Quando houver menção de marca, o texto deve usar apenas o nome do escritório configurado.
 - A experiência da interface é pensada para pt-BR, incluindo acentuação e rótulos.
 - O histórico é salvo localmente em arquivo JSON.

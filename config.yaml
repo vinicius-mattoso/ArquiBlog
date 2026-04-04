@@ -1,13 +1,13 @@
 app:
-  product_name: ArquiBlog Studio
-  office_name: Vini Arquitetura
+  product_name: ArquiPost Studio
+  office_name: "Vini Escrit\xF3rio de Arquitetura"
   language: pt-BR
-  default_channel: blog
+  default_channel: instagram
 brand:
-  tagline: Narrativas elegantes para estudios de arquitetura
-  voice_style: sofisticada, acolhedora e inspiradora
-  persona: redator especialista em arquitetura de interiores
-  objective: criar conteudos envolventes que transformem projetos em narrativas desejaveis
+  tagline: "Narrativas elegantes para o escrit\xF3rio de arquitetura"
+  voice_style: Sofisticada, acolhedora e inspiradora
+  persona: Redator especialista em arquitetura de interiores
+  objective: Criar conteudos envolventes que transformem projetos em narrativas desejaveis
 models:
   text_generation: gpt-3.5-turbo-instruct
   image_analysis: gpt-4-turbo
